@@ -181,6 +181,7 @@ import com.android.settings.wifi.savedaccesspoints2.SavedAccessPointsWifiSetting
 import com.android.settings.wifi.tether.WifiTetherSettings;
 
 import com.rising.settings.personalizationSettingsLayout;
+import com.rising.settings.fragments.misc.SmartPixels;
 
 import con.android.settings.wifi.tether.WifiTetherClientManager;
 
@@ -353,7 +354,8 @@ public class SettingsGateway {
             TurnScreenOnDetails.class.getName(),
             personalizationSettingsLayout.class.getName(),
             WifiTetherClientManager.class.getName(),
-            RunningServices.class.getName()
+            RunningServices.class.getName(),
+            SmartPixels.class.getName()
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
@@ -398,6 +400,7 @@ public class SettingsGateway {
             UserBackupSettingsActivity.class.getName(),
             Settings.PreviouslyConnectedDeviceDashboardActivity.class.getName(),
             Settings.personalizationSettingsLayoutActivity.class.getName(),
-            Settings.DevRunningServicesActivity.class.getName()
+            Settings.DevRunningServicesActivity.class.getName(),
+            Settings.SmartPixelsActivity.class.getName()
     };
 }
