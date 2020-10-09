@@ -181,6 +181,10 @@
             android:title="@string/tap_to_wake"
             android:summary="@string/tap_to_wake_summary"/>
 
+        <SwitchPreference
+            android:key="enable_blurs_on_windows"
+            android:title="@string/window_blurs"/>
+
         <!-- Prevent accidental wake-up -->
         <lineageos.preference.LineageSystemSettingSwitchPreference
             android:key="proximity_on_wake"
