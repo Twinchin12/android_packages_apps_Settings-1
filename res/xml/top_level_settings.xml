@@ -185,6 +185,15 @@
         settings:highlightableMenuKey="@string/menu_key_accounts"
         settings:controller="com.android.settings.accounts.TopLevelAccountEntryPreferenceController"/>
 
+    <Preference
+        android:fragment="com.rising.settings.personalizationSettingsLayout"
+        android:icon="@drawable/ic_homepage_personalizations"
+        android:key="top_level_personalizations"
+        android:order="9"
+        android:title="@string/rising_settings_title"
+        android:summary="@string/rising_settings_summary"
+        settings:controller="com.rising.settings.TopLevelSettingsPreferenceController"/>
+
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.system.SystemDashboardFragment"
         android:icon="@drawable/ic_settings_system_dashboard_white"
