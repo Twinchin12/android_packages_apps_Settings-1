@@ -14,8 +14,8 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- riceDroid versioning -->
-    <string name="rice_version_title">RiceOS Version</string>
+    <!-- Rising versioning -->
+    <string name="rice_version_title">RisingOS Version</string>
     <string name="rice_device_title">Device</string>
     <string name="rice_build_version_title">Build Version</string>
     <string name="rice_build_date_title">Build Date</string>
@@ -36,7 +36,7 @@
     <string name="connectivity_category_title">connectivity</string>
     
     <string name="navbar_gesture_custom">Navigation Gestures Customizations</string>
-    <string name="usercard_summary">Certified riceDroid user</string>
+    <string name="usercard_summary">Certified RisingOS user</string>
     
      <!-- About page -->
     <string name="battery">Battery</string>
@@ -48,11 +48,11 @@
     <string name="about_device_nearby">The device name can and will be seen by the nearby devices.</string>
     <string name="about_device_version_type_gapps">Pixel</string>
     <string name="about_device_version_type_vanilla">Vanilla</string>
-    <string name="version">RiceOS</string>
+    <string name="version">RisingUI</string>
     <string name="edit">Edit</string>
     <string name="device_name">Device name</string>
     <string name="about_us_info_category_title">About Us</string>
-    <string name="rice_revision">RiceDroid Revision</string>
+    <string name="rice_revision">RisingOS Revision</string>
     
     <string name="dashboard_morning1">Good Morning!</string>
     <string name="dashboard_morning2">The Sun is up!</string>
@@ -74,7 +74,7 @@
     <string name="dashboard_midnight3">Get some sleep..</string>
     <string name="dashboard_midnight4">Take some rest already..</string>
     <string name="dashboard_midnight5">Sleeping late is bad for you..</string>
-    <string name="dashboard_random1">Want some rice?</string>
+    <string name="dashboard_random1">Rising from the bottom..</string>
     <string name="dashboard_random2">The searchbar is pixels below..</string>
     <string name="dashboard_random3">Hi Owner!</string>
     <string name="dashboard_random4">Settings</string>
@@ -88,7 +88,7 @@
     <string name="build_is_official_summary">Built with love by %s</string>
     <string name="build_is_official_summary_oopsie">but, who made this build?</string>
     <string name="build_is_community_summary">Unofficial build by %s</string>
-    <string name="build_is_community_summary_oopsie">Psst! please tell the builder that he/she forgot to add RICE build flags!</string>
+    <string name="build_is_community_summary_oopsie">Psst! please tell the builder that he/she forgot to add build flags!</string>
 
     <!-- Ignore window secure -->
     <string name="ignore_window_secure_title">Ignore secure window flag</string>
