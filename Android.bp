@@ -109,6 +109,7 @@ android_library {
         "vendor.lineage.fastcharge-V1.0-java",
         "SystemUISharedLib",
         "google-fuelgauge",
+        "faceunlock_framework",
     ],
 
     libs: [
