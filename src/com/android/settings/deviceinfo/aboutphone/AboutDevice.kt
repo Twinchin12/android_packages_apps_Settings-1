@@ -25,11 +25,9 @@ class AboutDevice : FrameLayout {
     init {
         inflate(context, R.layout.device_info, this)
         // ROM Version
-        val versionCode = SystemProperties.get("ro.rising.code")
+        val versionCode = SystemProperties.get("ro.rising.version")
 
         findViewById<TextView>(R.id.romVersion).text = (context.getString(R.string.version) + " "  + versionCode).toString()
-        
-        findViewById<TextView>(R.id.romCodeName).text = ("#rise").toString()
 
         // Device
         var mDeviceName = SystemProperties.get("ro.product.product.device")

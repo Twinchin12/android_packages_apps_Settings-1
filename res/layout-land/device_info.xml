@@ -20,78 +20,65 @@ Copyright (C) The 2022 RiceDroid Project
 
     <androidx.cardview.widget.CardView
         android:id="@+id/logo"
-        android:layout_width="450dp"
+        android:layout_width="match_parent"
         android:layout_height="170dp"
         android:minWidth="160dp"
-        app:cardBackgroundColor="@color/dot_shapeColor"
-        app:cardCornerRadius="22dp"
+        app:cardBackgroundColor="?android:attr/colorAccent"
+        app:strokeColor="@color/op_control_text_color_primary"
+        app:strokeWidth="4dp"
+        app:cardCornerRadius="32dp"
         app:cardElevation="0dp">
 
+        <com.rice.utils.WallpaperBlurView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:gravity="center"
+            android:elevation="0dp"
+            android:contentDescription="@null"
+            android:foreground="@drawable/wallpaper_scrim"
+            android:background="@drawable/wallpaper_scrim"
+            android:orientation="vertical" />
+                
                 <LinearLayout
                     android:id="@+id/banner_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginStart="24dp"
-                    android:gravity="start|center_vertical"
-                    android:layout_gravity="start|center_vertical">
+                    android:gravity="center"
+                    android:layout_gravity="center">
 
                     <TextView
                         android:id="@+id/romVersion"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:fadingEdge="horizontal"
-                        android:gravity="start|center_vertical"
-                        android:layout_gravity="start|center_vertical"
+                        android:gravity="center"
+                        android:layout_gravity="center"
                         android:scrollHorizontally="true"
+                        android:drawableLeft="@drawable/ic_rom_logo_wrapper"
+                        android:drawablePadding="8dp"
                         android:singleLine="true"
-                        android:textColor="?android:attr/colorAccent"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/romCodeName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fadingEdge="horizontal"
-                        android:layout_marginTop="2dp"
-                        android:gravity="start|center_vertical"
-                        android:layout_gravity="start|center_vertical"
-                        android:scrollHorizontally="true"
-                        android:singleLine="true"
-                        android:textColor="?android:attr/colorAccent"
-                        android:textSize="16sp" />
+                        android:textColor="@*android:color/white"
+                        android:textSize="40sp"
+                         />
 
                     <TextView
                         android:id="@+id/deviceName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:fadingEdge="horizontal"
-                        android:layout_marginTop="2dp"
-                        android:gravity="start|center_vertical"
-                        android:layout_gravity="start|center_vertical"
+                        android:paddingTop="9dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
                         android:scrollHorizontally="true"
-                        android:singleLine="true"
-                        android:textColor="?android:attr/colorAccent"
-                        android:textSize="16sp" />
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@*android:color/white"
+                        android:textSize="16sp"
+                         />
                         
-     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="24dp"
-        android:gravity="start|center_vertical"
-        android:layout_gravity="start|center_vertical">
-                    
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="120dp"
-                android:gravity="start|center_vertical"
-                android:layout_gravity="start|center_vertical"
-                android:adjustViewBounds="true"
-                android:src="@drawable/ic_rom_logo"
-                android:tint="?android:attr/colorAccent" />
-
                 </LinearLayout>
-            </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
