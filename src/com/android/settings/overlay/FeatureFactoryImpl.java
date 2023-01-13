@@ -78,6 +78,9 @@ import com.google.android.settings.fuelgauge.BatterySettingsFeatureProviderGoogl
 import com.google.android.settings.fuelgauge.BatteryStatusFeatureProviderGoogleImpl;
 import com.google.android.settings.fuelgauge.PowerUsageFeatureProviderGoogleImpl;
 
+import android.os.UserHandle;
+import android.provider.Settings;
+
 /**
  * {@link FeatureFactory} implementation for AOSP Settings.
  */
@@ -123,11 +126,20 @@ public class FeatureFactoryImpl extends FeatureFactory {
         return mMetricsFeatureProvider;
     }
 
+
+    public boolean isChartGraphEnabled (Context context) {
+        boolean getChartGraphSettings = Settings.System.getIntForUser(context.getApplicationContext().getContentResolver(),
+        "battery_24_hrs_stats", 0, UserHandle.USER_CURRENT) != 0;
+
+        return getChartGraphSettings;
+    }
+
     @Override
     public PowerUsageFeatureProvider getPowerUsageFeatureProvider(Context context) {
         if (mPowerUsageFeatureProvider == null) {
-            mPowerUsageFeatureProvider = new PowerUsageFeatureProviderGoogleImpl(
-                    context.getApplicationContext());
+                mPowerUsageFeatureProvider = isChartGraphEnabled(context.getApplicationContext()) ? new PowerUsageFeatureProviderImpl(
+                        context.getApplicationContext()) : new PowerUsageFeatureProviderGoogleImpl(
+                            context.getApplicationContext());
         }
         return mPowerUsageFeatureProvider;
     }
@@ -135,7 +147,8 @@ public class FeatureFactoryImpl extends FeatureFactory {
     @Override
     public BatteryStatusFeatureProvider getBatteryStatusFeatureProvider(Context context) {
         if (mBatteryStatusFeatureProvider == null) {
-            mBatteryStatusFeatureProvider = new BatteryStatusFeatureProviderGoogleImpl(
+            mBatteryStatusFeatureProvider = isChartGraphEnabled(context.getApplicationContext()) ? new BatteryStatusFeatureProviderImpl(
+                context.getApplicationContext()) : new BatteryStatusFeatureProviderGoogleImpl(
                     context.getApplicationContext());
         }
         return mBatteryStatusFeatureProvider;
@@ -144,7 +157,7 @@ public class FeatureFactoryImpl extends FeatureFactory {
     @Override
     public BatterySettingsFeatureProvider getBatterySettingsFeatureProvider(Context context) {
         if (mBatterySettingsFeatureProvider == null) {
-            mBatterySettingsFeatureProvider = new BatterySettingsFeatureProviderGoogleImpl(
+            mBatterySettingsFeatureProvider = isChartGraphEnabled(context.getApplicationContext()) ? new BatterySettingsFeatureProviderImpl(context.getApplicationContext()) : new BatterySettingsFeatureProviderGoogleImpl(
                     context.getApplicationContext());
         }
         return mBatterySettingsFeatureProvider;
