@@ -29,7 +29,7 @@ import androidx.preference.Preference
 import androidx.preference.forEach
 
 import com.android.internal.logging.nano.MetricsProto
-import com.android.internal.util.crdroid.Utils
+import com.android.internal.util.rising.systemUtils
 
 import com.android.settings.R
 import com.android.settings.core.SubSettingLauncher
@@ -55,7 +55,7 @@ class AppLockPackageListFragment : DashboardFragment() {
         super.onAttach(context)
         appLockManager = context.getSystemService(AppLockManager::class.java)
         pm = context.packageManager
-        launchablePackages = Utils.launchablePackages(context)
+        launchablePackages = systemUtils.launchablePackages(context)
         whiteListedPackages = resources.getStringArray(
             com.android.internal.R.array.config_appLockAllowedSystemApps)
     }
@@ -99,7 +99,11 @@ class AppLockPackageListFragment : DashboardFragment() {
 
     private suspend fun getSelectedPackages(): Set<String> {
         return withContext(Dispatchers.IO) {
-            appLockManager.packageData.map { it.packageName }.toSet()
+            appLockManager.packageData.filter {
+                it.shouldProtectApp == true
+            }.map {
+                it.packageName
+            }.toSet()
         }
     }
 
@@ -116,11 +120,7 @@ class AppLockPackageListFragment : DashboardFragment() {
             isChecked = isProtected
             setOnPreferenceChangeListener { _, newValue ->
                 lifecycleScope.launch(Dispatchers.IO) {
-                    if (newValue as Boolean) {
-                        appLockManager.addPackage(packageInfo.packageName)
-                    } else {
-                        appLockManager.removePackage(packageInfo.packageName)
-                    }
+                    appLockManager.setShouldProtectApp(packageInfo.packageName, newValue as Boolean)
                 }
                 return@setOnPreferenceChangeListener true
             }
