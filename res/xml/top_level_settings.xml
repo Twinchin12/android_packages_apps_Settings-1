@@ -185,7 +185,7 @@
         settings:highlightableMenuKey="@string/menu_key_accounts"
         settings:controller="com.android.settings.accounts.TopLevelAccountEntryPreferenceController"/>
 
-    <Preference
+    <com.android.settings.widget.HomepagePreference
         android:fragment="com.rising.settings.personalizationSettingsLayout"
         android:icon="@drawable/ic_homepage_personalizations"
         android:key="top_level_personalizations"
