@@ -217,7 +217,7 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
 
     @Override
     protected boolean setDefaultKey(String key) {
-        setCurrentSystemNavigationMode(mOverlayManager, key);
+        setCurrentSystemNavigationMode(mOverlayManager, key, getContext());
         setIllustrationVideo(mVideoPreference, key);
         setGestureNavigationTutorialDialog(key);
         return true;
@@ -236,7 +236,7 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
         if (info != null && !info.isEnabled()) {
             // Enable the default gesture nav overlay. Back sensitivity for left and right are
             // stored as separate settings values, and other gesture nav overlays are deprecated.
-            setCurrentSystemNavigationMode(overlayManager, KEY_SYSTEM_NAV_GESTURAL);
+            setCurrentSystemNavigationMode(overlayManager, KEY_SYSTEM_NAV_GESTURAL, context);
             Settings.Secure.putFloat(context.getContentResolver(),
                     Settings.Secure.BACK_GESTURE_INSET_SCALE_LEFT, 1.0f);
             Settings.Secure.putFloat(context.getContentResolver(),
@@ -256,7 +256,7 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
     }
 
     @VisibleForTesting
-    static void setCurrentSystemNavigationMode(IOverlayManager overlayManager, String key) {
+    static void setCurrentSystemNavigationMode(IOverlayManager overlayManager, String key, Context context) {
         String overlayPackage = NAV_BAR_MODE_GESTURAL_OVERLAY;
         switch (key) {
             case KEY_SYSTEM_NAV_GESTURAL:
@@ -269,6 +269,12 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
                 overlayPackage = NAV_BAR_MODE_3BUTTON_OVERLAY;
                 break;
         }
+
+	if (overlayPackage == NAV_BAR_MODE_3BUTTON_OVERLAY) {
+	    LineageSettings.System.putInt(context.getContentResolver(),
+                        LineageSettings.System.NAVIGATION_BAR_HINT, 1);
+
+	}
 
         try {
             overlayManager.setEnabledExclusiveInCategory(overlayPackage, USER_CURRENT);
