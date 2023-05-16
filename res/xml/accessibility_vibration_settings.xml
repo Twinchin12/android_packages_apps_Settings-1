@@ -78,5 +78,25 @@
             app:controller="com.android.settings.accessibility.MediaVibrationTogglePreferenceController" />
 
     </PreferenceCategory>
+    
+    <!-- Misc vibration options -->
+    <PreferenceCategory
+        android:key="accessibility_misc_vibration_category"
+        android:title="@string/misc_vibration_category" >
+
+    <!-- Volume panel feedback -->
+    <com.rising.settings.preferences.SystemSettingSwitchPreference
+            android:key="volume_panel_haptic_feedback"
+            android:title="@string/volume_panel_haptic_feedback_title"
+            android:defaultValue="false" />
+            
+    <com.rising.settings.preferences.SystemSettingSwitchPreference
+            android:key="scroll_fling_haptic_feedback"
+            android:title="@string/scroll_fling_haptic_feedback_title"
+            android:summary="@string/scroll_fling_haptic_feedback_summary"
+            android:dependency="touch_vibration_preference_screen"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
